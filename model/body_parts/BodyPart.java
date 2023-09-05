@@ -36,7 +36,7 @@ public abstract class BodyPart {
         this.bodyGenderAttribute = bodyGenderAttribute;
         this.bodySkinAttribute = bodySkinAttribute;
         this.id = id;
-        this.imagePath = validImageFolder + "/" + bodyGenderAttribute.getAttribute() + "_" + bodySkinAttribute.getAttribute()
+        this.imagePath = validImageFolder + "/funko/" + bodyGenderAttribute.getAttribute() + "_" + bodySkinAttribute.getAttribute()
         + "_" + getPart() + "_" + String.format("%02d", id) + ".png";
     }
 
