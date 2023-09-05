@@ -5,11 +5,14 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import model.ImageUtils;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 public class FunkoPopFrame extends JFrame{
+    private static String validImageFolder = ImageUtils.getImageFolder("resources/images");
     private JPanel bodyPartsPanel = null;
     private JPanel headPanel;
     private JPanel torsoPanel;
@@ -30,8 +33,8 @@ public class FunkoPopFrame extends JFrame{
     private ColorButton yellowButton = new ColorButton(new Color(139, 69, 19));
     private ColorButton browButton = new ColorButton(new Color(101, 67, 33));
     private ColorButton blackButton = new ColorButton(new Color(50, 30, 20));
-    private ImageButton femaleButton = new ImageButton("/home/santiago/Documents/patrones1/funko_pop/resources/images/other/female_icon.png", 200, 200);
-    private ImageButton maleButton = new ImageButton("/home/santiago/Documents/patrones1/funko_pop/resources/images/other/male_icon.png", 200, 200);
+    private ImageButton femaleButton = new ImageButton(validImageFolder + "/other/female_icon.png", 200, 200);
+    private ImageButton maleButton = new ImageButton(validImageFolder + "/other/male_icon.png", 200, 200);
     
     public ColorButton getWhiteButton() {
         return whiteButton;
@@ -177,10 +180,10 @@ public class FunkoPopFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1600, 1000);
         
-        headPanel = createPartPanel("/home/santiago/Documents/patrones1/funko_pop/resources/images/funko/female_black_head_01.png");
-        torsoPanel = createPartPanel("/home/santiago/Documents/patrones1/funko_pop/resources/images/funko/female_black_torso_01.png");
-        pantsPanel = createPartPanel("/home/santiago/Documents/patrones1/funko_pop/resources/images/funko/female_black_pants_01.png");
-        shoesPanel = createPartPanel("/home/santiago/Documents/patrones1/funko_pop/resources/images/funko/female_black_shoes_01.png");
+        headPanel = createPartPanel(validImageFolder + "/funko/female_black_head_01.png");
+        torsoPanel = createPartPanel(validImageFolder + "/funko/female_black_torso_01.png");
+        pantsPanel = createPartPanel(validImageFolder + "/funko/female_black_pants_01.png");
+        shoesPanel = createPartPanel(validImageFolder + "/funko/female_black_shoes_01.png");
 
         JPanel skinGenderPanel = createSkinGenderPanel();
 
