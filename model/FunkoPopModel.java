@@ -1,6 +1,7 @@
 package model;
 
 import model.body_attributes.BodyAttributeEnum;
+import model.body_attributes.body_anatomy.BodyAnatomyAttributeFactory;
 import model.body_attributes.body_gender.BodyGenderAttributeFactory;
 import model.body_attributes.body_skin.BodySkinAttributeFactory;
 import model.body_parts.BodyPart;
@@ -9,14 +10,20 @@ import model.body_parts.BodyType;
 
 public class FunkoPopModel {
 
+    private BodyAnatomyAttributeFactory bodyAnatomyAttributeFactory = new BodyAnatomyAttributeFactory();
     private BodyGenderAttributeFactory bodyGenderAttributeFactory = new BodyGenderAttributeFactory();
     private BodySkinAttributeFactory bodySkinAttributeFactory = new BodySkinAttributeFactory();
+    private BodyAttributeEnum bodyAnatomyAttribute;
     private BodyAttributeEnum bodyGenderAttribute;
     private BodyAttributeEnum bodySkinAttribute;
     private BodyPart head;
     private BodyPart pants;
     private BodyPart shoes;
     private BodyPart torso;
+
+    public BodyAttributeEnum getBodyAnatomyAttribute() {
+        return bodyAnatomyAttribute;
+    }
 
     public BodyAttributeEnum getBodyGenderAttribute() {
         return bodyGenderAttribute;
@@ -46,7 +53,8 @@ public class FunkoPopModel {
         
     }
 
-    public void updateBody(BodyAttributeEnum bodyAttributeGender,
+    public void updateBody( BodyAttributeEnum bodyAttributeAnatomy,
+    BodyAttributeEnum bodyAttributeGender,
     BodyAttributeEnum bodyAttributeSkin,
     int headNumber,
     int pantsNumber,
@@ -55,29 +63,34 @@ public class FunkoPopModel {
     )
     {
         this.head = BodyPartFactory.getBodyPart(BodyType.HEAD,
+            bodyAnatomyAttributeFactory.getBodyAttribute(bodyAttributeAnatomy),
             bodyGenderAttributeFactory.getBodyAttribute(bodyAttributeGender),
             bodySkinAttributeFactory.getBodyAttribute(bodyAttributeSkin),
             headNumber
         );
 
         this.pants = BodyPartFactory.getBodyPart(BodyType.PANTS,
+            bodyAnatomyAttributeFactory.getBodyAttribute(bodyAttributeAnatomy),
             bodyGenderAttributeFactory.getBodyAttribute(bodyAttributeGender),
             bodySkinAttributeFactory.getBodyAttribute(bodyAttributeSkin),
             pantsNumber
         );
 
         this.shoes = BodyPartFactory.getBodyPart(BodyType.SHOES,
+            bodyAnatomyAttributeFactory.getBodyAttribute(bodyAttributeAnatomy),
             bodyGenderAttributeFactory.getBodyAttribute(bodyAttributeGender),
             bodySkinAttributeFactory.getBodyAttribute(bodyAttributeSkin),
             shoesNumber
         );
 
         this.torso = BodyPartFactory.getBodyPart(BodyType.TORSO,
+            bodyAnatomyAttributeFactory.getBodyAttribute(bodyAttributeAnatomy),
             bodyGenderAttributeFactory.getBodyAttribute(bodyAttributeGender),
             bodySkinAttributeFactory.getBodyAttribute(bodyAttributeSkin),
             torsoNumber
         );
 
+        this.bodyAnatomyAttribute = bodyAttributeAnatomy;
         this.bodyGenderAttribute = bodyAttributeGender;
         this.bodySkinAttribute = bodyAttributeSkin;
     }

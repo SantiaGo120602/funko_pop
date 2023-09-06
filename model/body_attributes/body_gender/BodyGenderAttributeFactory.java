@@ -6,7 +6,7 @@ import model.body_attributes.BodyAttributeEnum;
 import model.body_attributes.IBodyAttributeFactory;
 
 public class BodyGenderAttributeFactory implements IBodyAttributeFactory{
-    private static HashMap<BodyAttributeEnum, BodyGenderAttribute> genderMap = new HashMap<>();
+    private static HashMap<BodyAttributeEnum, BodyGenderAttribute> genderMap = new HashMap<BodyAttributeEnum, BodyGenderAttribute>();
 
     static {
         genderMap.put(BodyAttributeEnum.MALE, new Male());

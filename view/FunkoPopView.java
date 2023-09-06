@@ -19,6 +19,12 @@ public class FunkoPopView {
     public void addAddDownloadListener(ActionListener listener) {
         funkoPopFrame.getDownloadButton().addActionListener(listener);
     }
+    public void addAddRandomListener(ActionListener listener) {
+        funkoPopFrame.getRandomButton().addActionListener(listener);
+    }
+    public void addAddChangeListener(ActionListener listener) {
+        funkoPopFrame.getChangeButton().addActionListener(listener);
+    }
     public void addAddLeftHeadListener(ActionListener listener) {
         funkoPopFrame.getLeftButtonHead().addActionListener(listener);
     }

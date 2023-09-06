@@ -2,6 +2,7 @@ package model.body_parts;
 
 import java.util.HashMap;
 
+import model.body_attributes.body_anatomy.BodyAnatomyAttribute;
 import model.body_attributes.body_gender.BodyGenderAttribute;
 import model.body_attributes.body_skin.BodySkinAttribute;
 
@@ -15,9 +16,9 @@ public class BodyPartFactory {
         bodyMap.put(BodyType.SHOES, new Shoes());
     }
 
-    public static BodyPart getBodyPart(BodyType bodyType, BodyGenderAttribute bodyGenderAttribute, BodySkinAttribute bodySkinAttribute, int id){
+    public static BodyPart getBodyPart(BodyType bodyType, BodyAnatomyAttribute bodyAnatomyAttribute, BodyGenderAttribute bodyGenderAttribute, BodySkinAttribute bodySkinAttribute, int id){
         BodyPart bodyPart = bodyMap.get(bodyType);
-        bodyPart.setup(bodyGenderAttribute, bodySkinAttribute, id);
+        bodyPart.setup(bodyAnatomyAttribute, bodyGenderAttribute, bodySkinAttribute, id);
         return bodyPart;
     }
 }

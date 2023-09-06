@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
 
 import model.FunkoPopModel;
 import model.body_attributes.BodyAttributeEnum;
@@ -10,6 +12,7 @@ import view.FunkoPopView;
 public class FunkoPopController {
     private FunkoPopModel model;
     private FunkoPopView view;
+    private Random random = new Random();
 
     public FunkoPopView getView() {
         return view;
@@ -24,6 +27,8 @@ public class FunkoPopController {
         this.view = view;
 
         this.view.addAddDownloadListener(new DownloadListener());
+        this.view.addAddChangeListener(new ChangeListener());
+        this.view.addAddRandomListener(new RandomListener());
         this.view.addAddLeftHeadListener(new ButtonLeftHeadListener());
         this.view.addAddLeftTorsoListener(new ButtonLeftTorsoListener());
         this.view.addAddLeftPantsListener(new ButtonLeftPantsListener());
@@ -40,13 +45,14 @@ public class FunkoPopController {
         this.view.addAddMaleButtonListener(new ButtonMaleListener());
     }
 
-    public void updateModel(BodyAttributeEnum bodyAttributeGender,
+    public void updateModel( BodyAttributeEnum bodyAttributeAnatomy,
+    BodyAttributeEnum bodyAttributeGender,
     BodyAttributeEnum bodyAttributeSkin,
     int headNumber,
     int pantsNumber,
     int shoesNumber,
     int torsoNumber){
-        model.updateBody(bodyAttributeGender, bodyAttributeSkin, headNumber, pantsNumber, shoesNumber, torsoNumber);
+        model.updateBody(bodyAttributeAnatomy, bodyAttributeGender, bodyAttributeSkin, headNumber, pantsNumber, shoesNumber, torsoNumber);
         updateView();
     }
 
@@ -65,6 +71,52 @@ public class FunkoPopController {
         }
     }
 
+    private class ChangeListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            BodyAttributeEnum newAnatomy = BodyAttributeEnum.LEGO;
+            if (model.getBodyAnatomyAttribute() == BodyAttributeEnum.LEGO){
+                newAnatomy = BodyAttributeEnum.FUNKO;
+            }
+            updateModel(newAnatomy,
+            model.getBodyGenderAttribute(),
+            model.getBodySkinAttribute(),
+            model.getHead().getId(),
+            model.getPants().getId(),
+            model.getShoes().getId(),
+            model.getTorso().getId());   
+        }
+    }
+
+    private class RandomListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int[] randomArray = new int[4];
+            for (int i = 0; i < 4; i++) {
+                randomArray[i] = random.nextInt(3 - 1 + 1) + 1;
+            }
+            ArrayList<BodyAttributeEnum> anatomyList = new ArrayList<>();
+            anatomyList.add(BodyAttributeEnum.LEGO);
+            anatomyList.add(BodyAttributeEnum.FUNKO);
+            ArrayList<BodyAttributeEnum> genderList = new ArrayList<>();
+            genderList.add(BodyAttributeEnum.FEMALE);
+            genderList.add(BodyAttributeEnum.MALE);
+            ArrayList<BodyAttributeEnum> skinList = new ArrayList<>();
+            skinList.add(BodyAttributeEnum.WHITE);
+            skinList.add(BodyAttributeEnum.BLACK);
+            skinList.add(BodyAttributeEnum.YELLOW);
+            skinList.add(BodyAttributeEnum.BROWN);
+
+            updateModel(anatomyList.get(random.nextInt(anatomyList.size())),
+            genderList.get(random.nextInt(genderList.size())),
+            skinList.get(random.nextInt(skinList.size())),
+            randomArray[0],
+            randomArray[1],
+            randomArray[2],
+            randomArray[3]);
+        }
+    }
+
     private class ButtonLeftHeadListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -72,7 +124,8 @@ public class FunkoPopController {
             if (cambio==1){
                 cambio = 4;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             cambio-1,
             model.getPants().getId(),
@@ -89,7 +142,8 @@ public class FunkoPopController {
             if (cambio==1){
                 cambio = 4;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             model.getPants().getId(),
@@ -106,7 +160,8 @@ public class FunkoPopController {
             if (cambio==1){
                 cambio = 4;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             cambio-1,
@@ -123,7 +178,8 @@ public class FunkoPopController {
             if (cambio==1){
                 cambio = 4;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             model.getPants().getId(),
@@ -140,7 +196,8 @@ public class FunkoPopController {
             if (cambio==3){
                 cambio = 0;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             cambio+1,
             model.getPants().getId(),
@@ -157,7 +214,8 @@ public class FunkoPopController {
             if (cambio==3){
                 cambio = 0;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             model.getPants().getId(),
@@ -174,7 +232,8 @@ public class FunkoPopController {
             if (cambio==3){
                 cambio = 0;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             cambio+1,
@@ -192,7 +251,8 @@ public class FunkoPopController {
             if (cambio==3){
                 cambio = 0;
             }
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             model.getPants().getId(),
@@ -205,7 +265,8 @@ public class FunkoPopController {
     private class ButtonWhiteListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             BodyAttributeEnum.WHITE,
             model.getHead().getId(),
             model.getPants().getId(),
@@ -217,7 +278,8 @@ public class FunkoPopController {
     private class ButtonYellowListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             BodyAttributeEnum.YELLOW,
             model.getHead().getId(),
             model.getPants().getId(),
@@ -229,7 +291,8 @@ public class FunkoPopController {
     private class ButtonBrownListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             BodyAttributeEnum.BROWN,
             model.getHead().getId(),
             model.getPants().getId(),
@@ -241,7 +304,8 @@ public class FunkoPopController {
     private class ButtonBlackListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            updateModel(model.getBodyGenderAttribute(),
+            updateModel(model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
             BodyAttributeEnum.BLACK,
             model.getHead().getId(),
             model.getPants().getId(),
@@ -253,7 +317,8 @@ public class FunkoPopController {
     private class ButtonFemaleListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            updateModel(BodyAttributeEnum.FEMALE,
+            updateModel(model.getBodyAnatomyAttribute(),
+            BodyAttributeEnum.FEMALE,
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             model.getPants().getId(),
@@ -265,7 +330,8 @@ public class FunkoPopController {
     private class ButtonMaleListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            updateModel(BodyAttributeEnum.MALE,
+            updateModel(model.getBodyAnatomyAttribute(),
+            BodyAttributeEnum.MALE,
             model.getBodySkinAttribute(),
             model.getHead().getId(),
             model.getPants().getId(),

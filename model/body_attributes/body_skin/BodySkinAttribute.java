@@ -7,7 +7,7 @@ public abstract class BodySkinAttribute implements IBodyAttribute{
 
     @Override
     public String getAttribute() {
-        return skinColor;
+        return this.skinColor;
     }
 
     

@@ -4,9 +4,7 @@ package view;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
-
-import model.ImageUtils;
-
+import model.utils.ImageUtils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -18,6 +16,7 @@ public class FunkoPopFrame extends JFrame{
     private JPanel torsoPanel;
     private JPanel pantsPanel;
     private JPanel shoesPanel;
+    private JButton changeButton;
     private JButton downloadButton;
     private JButton randomButton;
     private JPanel containerPanel;
@@ -164,7 +163,21 @@ public class FunkoPopFrame extends JFrame{
         this.downloadButton = downloadButton;
     }
 
-    
+    public JButton getChangeButton() {
+        return changeButton;
+    }
+
+    public void setchangeButton(JButton changeButton) {
+        this.changeButton = changeButton;
+    }
+
+    public JButton getRandomButton() {
+        return randomButton;
+    }
+
+    public void setcRandomButton(JButton randomButton) {
+        this.randomButton = randomButton;
+    }
 
     public FunkoPopFrame() {
         JPanel mainContentPanel = new JPanel(new GridLayout(1, 3));
@@ -202,12 +215,15 @@ public class FunkoPopFrame extends JFrame{
         downloadButton.setPreferredSize(new Dimension(300, 120));
         randomButton = new JButton("Randomize Image");
         randomButton.setPreferredSize(new Dimension(300, 120));
+        changeButton = new JButton("Funko/Lego");
+        changeButton.setPreferredSize(new Dimension(300, 120));
         JPanel buttonsPanel = new JPanel();
         JPanel centerPanel = new JPanel();
-        centerPanel.setPreferredSize(new Dimension(400, 270));
+        centerPanel.setPreferredSize(new Dimension(400, 400));
         centerPanel.add(Box.createVerticalGlue()); 
         centerPanel.add(downloadButton);
         centerPanel.add(randomButton);
+        centerPanel.add(changeButton);
         centerPanel.add(Box.createVerticalGlue()); 
         centerPanel.setBackground(Color.DARK_GRAY);
         Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
