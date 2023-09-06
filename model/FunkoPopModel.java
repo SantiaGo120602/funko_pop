@@ -7,9 +7,12 @@ import model.body_attributes.body_skin.BodySkinAttributeFactory;
 import model.body_parts.BodyPart;
 import model.body_parts.BodyPartFactory;
 import model.body_parts.BodyType;
+import model.history.HistorySingleton;
+import model.history.HistoryEntry;
 
 public class FunkoPopModel {
 
+    private HistorySingleton historySingleton = HistorySingleton.getInstance();
     private BodyAnatomyAttributeFactory bodyAnatomyAttributeFactory = new BodyAnatomyAttributeFactory();
     private BodyGenderAttributeFactory bodyGenderAttributeFactory = new BodyGenderAttributeFactory();
     private BodySkinAttributeFactory bodySkinAttributeFactory = new BodySkinAttributeFactory();
@@ -93,6 +96,7 @@ public class FunkoPopModel {
         this.bodyAnatomyAttribute = bodyAttributeAnatomy;
         this.bodyGenderAttribute = bodyAttributeGender;
         this.bodySkinAttribute = bodyAttributeSkin;
+        historySingleton.addEntry(new HistoryEntry(bodyAttributeAnatomy, bodyAttributeGender, bodyAttributeSkin, headNumber, pantsNumber, shoesNumber, torsoNumber));
     }
 
 }
