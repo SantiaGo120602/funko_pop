@@ -23,7 +23,7 @@ public class HistorySingleton {
         return entriesList.get(index);
     }
 
-    public HistoryEntry getLastEntry() {
-        return entriesList.get(entriesList.size()-1);
+    public HistoryEntry pop() {
+        return entriesList.remove(entriesList.size()-1);
     }
 }

@@ -52,6 +52,10 @@ public class FunkoPopModel {
         return head;
     }
 
+    public HistorySingleton getHistorySingleton() {
+        return historySingleton;
+    }
+
     public FunkoPopModel() {
         
     }
@@ -65,6 +69,7 @@ public class FunkoPopModel {
     int torsoNumber
     )
     {
+        historySingleton.addEntry(new HistoryEntry(this.bodyAnatomyAttribute, bodyGenderAttribute, bodySkinAttribute, head.getId(), pants.getId(), shoes.getId(), torso.getId()));
         this.head = BodyPartFactory.getBodyPart(BodyType.HEAD,
             bodyAnatomyAttributeFactory.getBodyAttribute(bodyAttributeAnatomy),
             bodyGenderAttributeFactory.getBodyAttribute(bodyAttributeGender),
@@ -96,7 +101,6 @@ public class FunkoPopModel {
         this.bodyAnatomyAttribute = bodyAttributeAnatomy;
         this.bodyGenderAttribute = bodyAttributeGender;
         this.bodySkinAttribute = bodyAttributeSkin;
-        historySingleton.addEntry(new HistoryEntry(bodyAttributeAnatomy, bodyAttributeGender, bodyAttributeSkin, headNumber, pantsNumber, shoesNumber, torsoNumber));
     }
 
 }

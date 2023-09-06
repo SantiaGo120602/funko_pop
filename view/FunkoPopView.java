@@ -16,6 +16,9 @@ public class FunkoPopView {
         funkoPopFrame.updateImage("torso", torsoPath);
 
     }
+    public void addAddUndoListener(ActionListener listener) {
+        funkoPopFrame.getUndoButton().addActionListener(listener);
+    }
     public void addAddDownloadListener(ActionListener listener) {
         funkoPopFrame.getDownloadButton().addActionListener(listener);
     }

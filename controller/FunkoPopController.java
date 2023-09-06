@@ -7,6 +7,7 @@ import java.util.Random;
 
 import model.FunkoPopModel;
 import model.body_attributes.BodyAttributeEnum;
+import model.history.HistoryEntry;
 import view.FunkoPopView;
 
 public class FunkoPopController {
@@ -25,7 +26,8 @@ public class FunkoPopController {
     public FunkoPopController(FunkoPopModel model, FunkoPopView view) {
         this.model = model;
         this.view = view;
-
+        
+        this.view.addAddUndoListener(new UndoListener());
         this.view.addAddDownloadListener(new DownloadListener());
         this.view.addAddChangeListener(new ChangeListener());
         this.view.addAddRandomListener(new RandomListener());
@@ -70,6 +72,23 @@ public class FunkoPopController {
             view.getFunkoPopFrame().downloadImage();
         }
     }
+
+    private class UndoListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            HistoryEntry historyEntry = model.getHistorySingleton().pop();
+            updateModel(historyEntry.getBodyAnatomyAttribute(),
+            historyEntry.getBodyGenderAttribute(),
+            historyEntry.getBodySkinAttribute(),
+            historyEntry.getHeadCode(),
+            historyEntry.getPantsCode(),
+            historyEntry.getPantsCode(),
+            historyEntry.getTorsoCode());
+        }
+    }
+
+    
 
     private class ChangeListener implements ActionListener{
         @Override

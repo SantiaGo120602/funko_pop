@@ -19,6 +19,7 @@ public class FunkoPopFrame extends JFrame{
     private JButton changeButton;
     private JButton downloadButton;
     private JButton randomButton;
+    private JButton undoButton;
     private JPanel containerPanel;
     private JButton rightButtonPants = new JButton(">");
     private JButton rightButtonShoes = new JButton(">");
@@ -179,6 +180,13 @@ public class FunkoPopFrame extends JFrame{
         this.randomButton = randomButton;
     }
 
+    public JButton getUndoButton() {
+        return undoButton;
+    }
+
+    public void setUndoButton(JButton undoButton) {
+        this.undoButton = undoButton;
+    }
     public FunkoPopFrame() {
         JPanel mainContentPanel = new JPanel(new GridLayout(1, 3));
         leftButtonHead.setPreferredSize(new Dimension(85, 85));
@@ -217,6 +225,8 @@ public class FunkoPopFrame extends JFrame{
         randomButton.setPreferredSize(new Dimension(300, 120));
         changeButton = new JButton("Funko/Lego");
         changeButton.setPreferredSize(new Dimension(300, 120));
+        undoButton = new JButton("Undo");
+        undoButton.setPreferredSize(new Dimension(300, 120));
         JPanel buttonsPanel = new JPanel();
         JPanel centerPanel = new JPanel();
         centerPanel.setPreferredSize(new Dimension(400, 400));
@@ -224,6 +234,7 @@ public class FunkoPopFrame extends JFrame{
         centerPanel.add(downloadButton);
         centerPanel.add(randomButton);
         centerPanel.add(changeButton);
+        centerPanel.add(undoButton);
         centerPanel.add(Box.createVerticalGlue()); 
         centerPanel.setBackground(Color.DARK_GRAY);
         Border border3 = BorderFactory.createLineBorder(Color.BLACK, 2);
