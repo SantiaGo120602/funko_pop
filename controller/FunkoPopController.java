@@ -2,8 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import model.BodyAttributeEnum;
+
 import model.FunkoPopModel;
+import model.body_attributes.BodyAttributeEnum;
 import view.FunkoPopView;
 
 public class FunkoPopController {

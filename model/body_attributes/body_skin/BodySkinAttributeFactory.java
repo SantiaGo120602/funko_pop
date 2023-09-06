@@ -1,9 +1,9 @@
-package model.body_skin;
+package model.body_attributes.body_skin;
 
 import java.util.HashMap;
 
-import model.BodyAttributeEnum;
-import model.IBodyAttributeFactory;
+import model.body_attributes.BodyAttributeEnum;
+import model.body_attributes.IBodyAttributeFactory;
 
 public class BodySkinAttributeFactory implements IBodyAttributeFactory{
     private static HashMap<BodyAttributeEnum, BodySkinAttribute> skinMap = new HashMap<>();

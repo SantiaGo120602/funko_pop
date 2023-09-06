@@ -1,8 +1,8 @@
 package model.body_parts;
 
 import model.ImageUtils;
-import model.body_gender.BodyGenderAttribute;
-import model.body_skin.BodySkinAttribute;
+import model.body_attributes.body_gender.BodyGenderAttribute;
+import model.body_attributes.body_skin.BodySkinAttribute;
 
 public abstract class BodyPart {
     public static String validImageFolder = ImageUtils.getImageFolder("resources/images");

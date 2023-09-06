@@ -1,10 +1,11 @@
 package model;
 
-import model.body_gender.BodyGenderAttributeFactory;
+import model.body_attributes.BodyAttributeEnum;
+import model.body_attributes.body_gender.BodyGenderAttributeFactory;
+import model.body_attributes.body_skin.BodySkinAttributeFactory;
 import model.body_parts.BodyPart;
 import model.body_parts.BodyPartFactory;
 import model.body_parts.BodyType;
-import model.body_skin.BodySkinAttributeFactory;
 
 public class FunkoPopModel {
 

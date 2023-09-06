@@ -1,9 +1,9 @@
-package model.body_gender;
+package model.body_attributes.body_gender;
 
 import java.util.HashMap;
 
-import model.BodyAttributeEnum;
-import model.IBodyAttributeFactory;
+import model.body_attributes.BodyAttributeEnum;
+import model.body_attributes.IBodyAttributeFactory;
 
 public class BodyGenderAttributeFactory implements IBodyAttributeFactory{
     private static HashMap<BodyAttributeEnum, BodyGenderAttribute> genderMap = new HashMap<>();

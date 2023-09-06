@@ -1,8 +1,9 @@
 package model.body_parts;
 
 import java.util.HashMap;
-import model.body_gender.BodyGenderAttribute;
-import model.body_skin.BodySkinAttribute;
+
+import model.body_attributes.body_gender.BodyGenderAttribute;
+import model.body_attributes.body_skin.BodySkinAttribute;
 
 public class BodyPartFactory {
     private static HashMap<BodyType, BodyPart> bodyMap = new HashMap<>();

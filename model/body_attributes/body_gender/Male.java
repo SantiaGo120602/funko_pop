@@ -1,4 +1,4 @@
-package model.body_gender;
+package model.body_attributes.body_gender;
 
 public class Male extends BodyGenderAttribute{
     private String gender = "male";

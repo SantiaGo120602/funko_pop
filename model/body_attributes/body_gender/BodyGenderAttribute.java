@@ -1,6 +1,6 @@
-package model.body_gender;
+package model.body_attributes.body_gender;
 
-import model.IBodyAttribute;
+import model.body_attributes.IBodyAttribute;
 
 public class BodyGenderAttribute implements IBodyAttribute{
     private String gender;

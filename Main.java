@@ -1,8 +1,8 @@
 import javax.swing.SwingUtilities;
 
 import controller.FunkoPopController;
-import model.BodyAttributeEnum;
 import model.FunkoPopModel;
+import model.body_attributes.BodyAttributeEnum;
 import view.FunkoPopFrame;
 import view.FunkoPopView;
 

@@ -1,6 +1,6 @@
-package model.body_skin;
+package model.body_attributes.body_skin;
 
-import model.IBodyAttribute;
+import model.body_attributes.IBodyAttribute;
 
 public abstract class BodySkinAttribute implements IBodyAttribute{
     private String skinColor;
