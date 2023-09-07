@@ -12,7 +12,6 @@ import model.body_parts.Pants;
 import model.body_parts.Shoes;
 import model.body_parts.Torso;
 import model.history.HistorySingleton;
-import model.history.HistoryEntry;
 
 public class FunkoPopModel {
 
