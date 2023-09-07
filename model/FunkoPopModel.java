@@ -7,6 +7,10 @@ import model.body_attributes.body_skin.BodySkinAttributeFactory;
 import model.body_parts.BodyPart;
 import model.body_parts.BodyPartFactory;
 import model.body_parts.BodyType;
+import model.body_parts.Head;
+import model.body_parts.Pants;
+import model.body_parts.Shoes;
+import model.body_parts.Torso;
 import model.history.HistorySingleton;
 import model.history.HistoryEntry;
 
@@ -19,10 +23,10 @@ public class FunkoPopModel {
     private BodyAttributeEnum bodyAnatomyAttribute;
     private BodyAttributeEnum bodyGenderAttribute;
     private BodyAttributeEnum bodySkinAttribute;
-    private BodyPart head;
-    private BodyPart pants;
-    private BodyPart shoes;
-    private BodyPart torso;
+    private BodyPart head = new Head();
+    private BodyPart pants = new Pants();
+    private BodyPart shoes = new Shoes();
+    private BodyPart torso = new Torso();
 
     public BodyAttributeEnum getBodyAnatomyAttribute() {
         return bodyAnatomyAttribute;
@@ -69,7 +73,6 @@ public class FunkoPopModel {
     int torsoNumber
     )
     {
-        historySingleton.addEntry(new HistoryEntry(this.bodyAnatomyAttribute, bodyGenderAttribute, bodySkinAttribute, head.getId(), pants.getId(), shoes.getId(), torso.getId()));
         this.head = BodyPartFactory.getBodyPart(BodyType.HEAD,
             bodyAnatomyAttributeFactory.getBodyAttribute(bodyAttributeAnatomy),
             bodyGenderAttributeFactory.getBodyAttribute(bodyAttributeGender),

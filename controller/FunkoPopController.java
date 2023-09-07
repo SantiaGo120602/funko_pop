@@ -14,6 +14,7 @@ public class FunkoPopController {
     private FunkoPopModel model;
     private FunkoPopView view;
     private Random random = new Random();
+    private static Boolean HCONTROL = false;
 
     public FunkoPopView getView() {
         return view;
@@ -54,6 +55,17 @@ public class FunkoPopController {
     int pantsNumber,
     int shoesNumber,
     int torsoNumber){
+        if (!HCONTROL){
+            model.getHistorySingleton().addEntry(new HistoryEntry(
+            model.getBodyAnatomyAttribute(),
+            model.getBodyGenderAttribute(),
+            model.getBodySkinAttribute(),
+            model.getHead().getId(),
+            model.getPants().getId(),
+            model.getShoes().getId(),
+            model.getTorso().getId()));
+            HCONTROL = false;
+        }
         model.updateBody(bodyAttributeAnatomy, bodyAttributeGender, bodyAttributeSkin, headNumber, pantsNumber, shoesNumber, torsoNumber);
         updateView();
     }
@@ -78,6 +90,7 @@ public class FunkoPopController {
         @Override
         public void actionPerformed(ActionEvent arg0) {
             HistoryEntry historyEntry = model.getHistorySingleton().pop();
+            HCONTROL = true;
             updateModel(historyEntry.getBodyAnatomyAttribute(),
             historyEntry.getBodyGenderAttribute(),
             historyEntry.getBodySkinAttribute(),

@@ -229,7 +229,7 @@ public class FunkoPopFrame extends JFrame{
         undoButton.setPreferredSize(new Dimension(300, 120));
         JPanel buttonsPanel = new JPanel();
         JPanel centerPanel = new JPanel();
-        centerPanel.setPreferredSize(new Dimension(400, 400));
+        centerPanel.setPreferredSize(new Dimension(400, 600));
         centerPanel.add(Box.createVerticalGlue()); 
         centerPanel.add(downloadButton);
         centerPanel.add(randomButton);
